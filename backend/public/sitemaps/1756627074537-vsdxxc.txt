@@ -1,0 +1,10 @@
+index.html
+features.html
+pricing.html
+support.html
+blog.html
+careers.html
+product1.html
+product2.html
+product3.html
+privacy.html

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>index.html</loc>
+  </url>
+  <url>
+    <loc>features.html</loc>
+  </url>
+  <url>
+    <loc>pricing.html</loc>
+  </url>
+  <url>
+    <loc>support.html</loc>
+  </url>
+  <url>
+    <loc>blog.html</loc>
+  </url>
+  <url>
+    <loc>careers.html</loc>
+  </url>
+  <url>
+    <loc>product1.html</loc>
+  </url>
+  <url>
+    <loc>product2.html</loc>
+  </url>
+  <url>
+    <loc>product3.html</loc>
+  </url>
+  <url>
+    <loc>privacy.html</loc>
+  </url>
+</urlset>

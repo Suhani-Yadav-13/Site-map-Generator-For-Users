@@ -1,0 +1,15 @@
+home.html
+products.html
+products/electronics.html
+products/furniture.html
+products/clothing.html
+services.html
+contact.html
+products/electronics/phones.html
+products/electronics/tvs.html
+products/electronics/laptops.html
+products/furniture/sofas.html
+products/furniture/tables.html
+about.html
+privacy.html
+terms.html

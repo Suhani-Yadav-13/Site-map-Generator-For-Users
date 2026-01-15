@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>chrome://resources/css/text_defaults_md.css</loc>
+  </url>
+  <url>
+    <loc>chrome://theme/colors.css?sets=ui,chrome</loc>
+  </url>
+  <url>
+    <loc>shared_vars.css</loc>
+  </url>
+</urlset>

@@ -1,0 +1,100 @@
+<% layout('layouts/main') %>
+
+<div class="container mt-5">
+  <h3 class="fw-bold text-center mb-4">Compact Visual Sitemap Tree</h3>
+
+  <!-- Scrollable tree container with colored background -->
+  <div id="sitemapTreeContainer" style="
+      width:100%; 
+      height:500px; 
+      overflow:auto; 
+      border-radius:16px; 
+      padding:15px; 
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.15), rgba(26, 188, 156, 0.15));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  ">
+    <svg id="sitemapTree" width="800" height="500"></svg>
+  </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+  const links = <%- JSON.stringify(sitemap.links) %>;
+
+  function buildTree(urls) {
+    const root = { name: "Home", children: [] };
+    urls.forEach(url => {
+      let parts = url.replace(/^https?:\/\//, "").split("/");
+      let current = root;
+      parts.forEach(part => {
+        if (!part) return;
+        let child = current.children.find(c => c.name === part);
+        if (!child) {
+          child = { name: part, children: [] };
+          current.children.push(child);
+        }
+        current = child;
+      });
+    });
+    return root;
+  }
+
+  const treeData = buildTree(links);
+  const width = 800;
+  const height = 500;
+
+  const svg = d3.select("#sitemapTree")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(60,30)");
+
+  const root = d3.hierarchy(treeData);
+
+  const treeLayout = d3.tree()
+    .size([height - 60, width - 200])
+    .separation(() => 0.7);
+
+  treeLayout(root);
+
+  // Links
+  svg.selectAll('path')
+    .data(root.links())
+    .enter()
+    .append('path')
+    .attr('d', d3.linkHorizontal()
+      .x(d => d.y)
+      .y(d => d.x))
+    .attr("fill", "none")
+    .attr("stroke", "#bbb")
+    .attr("stroke-width", 1.2);
+
+  // Nodes
+  const nodes = svg.selectAll('g.node')
+    .data(root.descendants())
+    .enter()
+    .append('g')
+    .attr('class', 'node')
+    .attr('transform', d => `translate(${d.y},${d.x})`);
+
+  nodes.append('circle')
+    .attr('r', 4)
+    .attr('fill', '#3498db')
+    .attr('stroke', '#2980b9')
+    .attr('stroke-width', 1.5)
+    .on("mouseover", function() { d3.select(this).attr('fill', '#1abc9c'); })
+    .on("mouseout", function() { d3.select(this).attr('fill', '#3498db'); });
+
+  nodes.append('text')
+    .attr('dy', 3)
+    .attr('x', d => d.children ? -10 : 10)
+    .style('font-size', '11px')
+    .style('font-family', 'Segoe UI, Tahoma, sans-serif')
+    .style('text-anchor', d => d.children ? 'end' : 'start')
+    .text(d => d.data.name)
+    .on("mouseover", function() { d3.select(this).style("font-weight", "bold"); })
+    .on("mouseout", function() { d3.select(this).style("font-weight", "normal"); });
+</script>

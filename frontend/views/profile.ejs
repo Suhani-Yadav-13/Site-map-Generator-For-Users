@@ -1,0 +1,60 @@
+<% layout('layouts/main') %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body text-center p-5">
+
+          <!-- Profile Avatar -->
+<div class="mb-4">
+  <% if (user.profilePic && user.profilePic.trim() !== "") { %>
+    <!-- If user uploaded a profile picture -->
+    <img src="<%= user.profilePic %>" 
+         alt="Profile Picture"
+         class="rounded-circle shadow-sm border"
+         width="120" height="120">
+  <% } else { %>
+    <!-- Fallback: UI Avatar with initials -->
+    <img src="https://ui-avatars.com/api/?name=<%= user.name ? user.name : 'User' %>&background=0D8ABC&color=fff&size=120" 
+         alt="Profile Picture"
+         class="rounded-circle shadow-sm border">
+  <% } %>
+</div>
+
+
+          <!-- Heading -->
+          <h3 class="fw-bold mb-1"><%= user.name %></h3>
+          <p class="text-muted mb-4"><%= user.email %></p>
+
+          <!-- Profile Info -->
+          <div class="list-group text-start mb-4">
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+              <span><i class="bi bi-person-circle me-2"></i> Full Name</span>
+              <span class="fw-semibold"><%= user.name %></span>
+            </div>
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+              <span><i class="bi bi-envelope-at me-2"></i> Email</span>
+              <span class="fw-semibold"><%= user.email %></span>
+            </div>
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+              <span><i class="bi bi-calendar3 me-2"></i> Joined</span>
+              <span class="fw-semibold"><%= user.createdAt.toDateString() %></span>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="d-flex justify-content-center gap-3">
+            <a href="/dashboard" class="btn btn-outline-primary rounded-pill px-4">
+              ⬅ Back to Dashboard
+            </a>
+            <a href="/logout" class="btn btn-danger rounded-pill px-4">
+              Logout
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

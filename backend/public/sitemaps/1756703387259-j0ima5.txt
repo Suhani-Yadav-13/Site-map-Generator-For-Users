@@ -1,0 +1,6 @@
+https://example.com/
+https://example.com/about/team
+https://example.com/about/careers
+https://example.com/services/web
+https://example.com/services/seo
+https://example.com/contact

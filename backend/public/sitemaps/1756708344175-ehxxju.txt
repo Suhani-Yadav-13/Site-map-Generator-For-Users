@@ -1,0 +1,3 @@
+chrome://resources/css/text_defaults_md.css
+chrome://theme/colors.css?sets=ui,chrome
+shared_vars.css

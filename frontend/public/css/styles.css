@@ -1,0 +1,338 @@
+.navbar-brand {
+  font-weight: bold;
+}
+
+nav.navbar {
+  position: relative;
+  z-index: 10; /* higher than any background overlay */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-nav .nav-link.active {
+  font-weight: 700;                      /* Make the active page bold */
+  color: #00e676 !important;             /* Bright green text color */
+  position: relative;                    /* Needed for custom underline */
+}
+
+/* Custom underline using pseudo-element */
+.navbar-nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;                          /* Distance of underline from text */
+  width: 100%;
+  height: 3px;                            /* Thickness of underline */
+  background-color: #00e676;             /* Underline color (same as text) */
+  border-radius: 2px;                     /* Rounded edges of underline */
+}
+
+
+
+
+/* ---------------- Home/Get Started Page ---------------- */
+.home-page-background {
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+
+  background: #1565c0;  /* Solid clean blue */
+  color: #fff;
+  z-index: 0;
+}
+
+/* Subtle floating decorative shapes */
+.home-page-background::before,
+.home-page-background::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: floatHome 18s linear infinite;
+  z-index: 0;
+}
+.home-page-background::before {
+  width: 250px;
+  height: 250px;
+  top: -50px;
+  right: -50px;
+}
+.home-page-background::after {
+  width: 350px;
+  height: 350px;
+  bottom: -80px;
+  left: -80px;
+  animation-duration: 22s;
+}
+
+@keyframes floatHome {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* Content card */
+.home-page-content {
+  position: relative;
+  z-index: 1;
+  max-width: 650px;
+  padding: 50px 40px;
+  border-radius: 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 1.2s ease;
+}
+
+.home-page-content h1 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: #fff;
+}
+.home-page-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #f1f1f1;
+}
+.home-page-content a.btn {
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  background: #ffffff;
+  border: none;
+  color: #1565c0;
+  transition: all 0.3s ease;
+}
+.home-page-content a.btn:hover {
+  background: #f1f1f1;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------- Login/Signup Pages ---------------- */
+.login-page-background {
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* slightly lower */
+  padding-top: 80px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  overflow: hidden;
+
+  background: linear-gradient(-45deg, #4a90e2, #145ea8, #6a11cb, #2575fc);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+}
+
+/* Animated background gradient */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating circles for depth */
+.login-page-background::before,
+.login-page-background::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  animation: float 20s linear infinite;
+  z-index: 0;
+}
+.login-page-background::before {
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  left: -50px;
+}
+.login-page-background::after {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  right: -100px;
+  animation-duration: 25s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* Glassmorphic card */
+.login-form-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 40px 40px;       /* more padding */
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  max-width: 450px;          /* wider card */
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form-container:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+  z-index: 1000;
+}
+
+/* Heading */
+.login-form-container h2 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+/* Auth page links */
+.login-form-container a {
+  color: #ffd54f;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.login-form-container a:hover {
+  color: #fff176;
+  text-decoration: underline;
+}
+
+/* Error messages */
+.error-msg, .invalid-feedback {
+  display: none;
+  color: red !important;              /* black text */
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  background: rgba(255, 255, 255, 0.85); /* soft white background */
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.is-invalid + .invalid-feedback {
+  display: block;
+}
+
+/* Required * symbol */
+.form-label .text-danger {
+  color: black;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+/* Auth links */
+.auth-link {
+  color: #007bff;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.auth-link:hover {
+  color: #0056b3;
+}
+
+
+
+
+/* Ensure container adapts inside without overflow */
+.dashboard-bg .container {
+  flex: 1;                       /* Take remaining height */
+  overflow: hidden;              /* Hide inner scroll */
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/* Welcome Card */
+.welcome-card {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+
+}
+
+/* Profile Card */
+.profile-card img {
+  border-radius: 50%;
+}
+
+.generate-card {
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(120deg, #38ef7d 0%, #11998e 100%);
+  color: #fff;
+  box-shadow: 0 3px 24px 0 rgba(44,62,80,0.08);
+}
+
+/* Recent Card */
+.recent-card .card-header {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Hover Enlarge Effect - only for profile and generate */
+.profile-card,
+.generate-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-card:hover,
+.generate-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Gradient Button */
+.btn-gradient {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  border: none;
+  color: #fff;
+  transition: 0.3s;
+}
+.btn-gradient:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* Recent List Hover */
+.list-hover {
+  transition: background 0.2s ease;
+}
+.list-hover:hover {
+  background: #f8f9fa;
+}
+
+
+
+
+
+
+
+
+
+
